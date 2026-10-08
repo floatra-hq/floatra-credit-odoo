@@ -3,6 +3,12 @@
 All notable changes to the Floatra Odoo connector (`floatra_credit`).
 Versions follow the addon's `__manifest__.py` (`<odoo series>.<major>.<minor>.<patch>`).
 
+## [17.0.0.3.2] - 2026-10-08
+
+- **Clear copy for a deactivated platform.** Floatra now answers a deactivated
+  platform's API key with `403 PLATFORM_INACTIVE` (core, 2026-10-08); the
+  connector says the platform is deactivated instead of the generic 403 text.
+
 ## [17.0.0.3.1] - 2026-10-08
 
 Found by the staging pass against staging-api (2026-10-08).

@@ -220,6 +220,10 @@ _MESSAGES_BY_CODE = {
         "Floatra has suspended your platform. Contact Floatra before "
         "retrying."
     ),
+    "PLATFORM_INACTIVE": (
+        "Floatra has deactivated your platform. Contact Floatra; retrying "
+        "will not help."
+    ),
     "INVALID_API_KEY": "Floatra rejected the API key. Check the Floatra settings.",
     "PLATFORM_ID_MISMATCH": (
         "The Platform ID in the Floatra settings does not match the API key."

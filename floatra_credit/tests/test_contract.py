@@ -366,6 +366,7 @@ class TestErrors(unittest.TestCase):
         for code, expected in (
             ("AGENT_NOT_AUTHORIZED", "agent ID"),
             ("PLATFORM_SUSPENDED", "suspended your platform"),
+            ("PLATFORM_INACTIVE", "deactivated your platform"),
         ):
             body = {"success": False, "data": None, "error": "refused",
                     "errorCode": code}

@@ -82,15 +82,15 @@ You install this addon inside your own Odoo instance. Floatra does not touch you
      verify, and unzip into a directory on your `addons_path`:
 
      ```bash
-     shasum -a 256 -c floatra_credit-odoo-17.0.0.3.1.zip.sha256   # macOS
-     sha256sum -c floatra_credit-odoo-17.0.0.3.1.zip.sha256       # Linux
-     unzip floatra_credit-odoo-17.0.0.3.1.zip -d /path/to/addons   # -> addons/floatra_credit/
+     shasum -a 256 -c floatra_credit-odoo-17.0.0.3.2.zip.sha256   # macOS
+     sha256sum -c floatra_credit-odoo-17.0.0.3.2.zip.sha256       # Linux
+     unzip floatra_credit-odoo-17.0.0.3.2.zip -d /path/to/addons   # -> addons/floatra_credit/
      ```
    - **Git**: clone the release tag and add the clone to your `addons_path`
      (the addon is the `floatra_credit/` directory inside it):
 
      ```bash
-     git clone --depth 1 --branch v17.0.0.3.1 https://github.com/floatra-hq/floatra-credit-odoo
+     git clone --depth 1 --branch v17.0.0.3.2 https://github.com/floatra-hq/floatra-credit-odoo
      ```
 
    **Apps → Import Module does not work for this addon**: that importer
