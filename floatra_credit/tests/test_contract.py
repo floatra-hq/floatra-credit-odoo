@@ -359,6 +359,20 @@ class TestErrors(unittest.TestCase):
             self.assertEqual(ctx.exception.status, fx["status"], name)
             self.assertIn(expected, ctx.exception.user_message(), name)
 
+    def test_forbidden_codes_are_not_reported_as_wrong_platform(self):
+        # Staging pass 2026-10-08: confirm-delivery with an Agent ID Floatra
+        # does not know answers 403 AGENT_NOT_AUTHORIZED; the generic 403
+        # copy blamed the platform settings instead.
+        for code, expected in (
+            ("AGENT_NOT_AUTHORIZED", "agent ID"),
+            ("PLATFORM_SUSPENDED", "suspended your platform"),
+        ):
+            body = {"success": False, "data": None, "error": "refused",
+                    "errorCode": code}
+            message = contract.describe_error(403, body)
+            self.assertIn(expected, message, code)
+            self.assertNotIn("does not belong to the platform", message, code)
+
     def test_503_is_retried_once(self):
         fx = fixture("response-lock-status-error-unavailable")
         with patch.object(client_mod.requests, "request", return_value=_response(fx)) as req:

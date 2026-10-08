@@ -212,6 +212,14 @@ _MESSAGES_BY_CODE = {
         "This loan is in the other Floatra environment. Use the API key for "
         "its own environment (live vs sandbox)."
     ),
+    "AGENT_NOT_AUTHORIZED": (
+        "Floatra does not recognise this agent ID on your platform. Leave "
+        "Agent ID empty, or enter the agent's Floatra agent ID."
+    ),
+    "PLATFORM_SUSPENDED": (
+        "Floatra has suspended your platform. Contact Floatra before "
+        "retrying."
+    ),
     "INVALID_API_KEY": "Floatra rejected the API key. Check the Floatra settings.",
     "PLATFORM_ID_MISMATCH": (
         "The Platform ID in the Floatra settings does not match the API key."

@@ -62,7 +62,7 @@ class ResPartner(models.Model):
         "RESTRICTED, SUSPENDED). Drives the credit-limit multiplier.",
     )
     floatra_credit_limit = fields.Monetary(
-        string="Credit Limit",
+        string="Floatra Credit Limit",
         readonly=True,
         currency_field="currency_id",
         help="Maximum outstanding credit the merchant can carry from "

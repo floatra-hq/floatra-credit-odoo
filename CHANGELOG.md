@@ -3,6 +3,19 @@
 All notable changes to the Floatra Odoo connector (`floatra_credit`).
 Versions follow the addon's `__manifest__.py` (`<odoo series>.<major>.<minor>.<patch>`).
 
+## [17.0.0.3.1] - 2026-10-08
+
+Found by the staging pass against staging-api (2026-10-08).
+
+- **Clear copy for a refused agent ID.** Confirming a delivery with an Agent ID
+  Floatra does not know is refused with `403 AGENT_NOT_AUTHORIZED`; the
+  connector showed the generic 403 text ("does not belong to the platform in
+  the Floatra settings"), which sent staff to the wrong setting. It now says
+  the agent ID is not recognised and how to proceed. `PLATFORM_SUSPENDED` gets
+  its own message too.
+- The partner's Floatra limit is labelled "Floatra Credit Limit", so it no
+  longer shares a label with Odoo's own `credit_limit` (install warning).
+
 ## [17.0.0.3.0]
 
 First public release, for Odoo 17.0. MIT licence.
