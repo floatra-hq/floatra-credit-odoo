@@ -1,0 +1,20 @@
+{
+  "status": 201,
+  "body": {
+    "success": true,
+    "data": {
+      "floatra_merchant_id": "mer_01",
+      "kyc_type": "NIN",
+      "status": "SUCCESS",
+      "verification_tier": "FULLY_VERIFIED",
+      "verification_id": null,
+      "message": "Sandbox: identity verification simulated (no external check performed)",
+      "retry_count": 1,
+      "max_retries": 3,
+      "checked_at": "2026-10-01T12:00:00.000Z"
+    },
+    "error": null,
+    "errorCode": null,
+    "timestamp": "2026-10-01T12:00:00.000Z"
+  }
+}

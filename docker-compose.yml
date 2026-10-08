@@ -1,0 +1,80 @@
+# Floatra Odoo Connector — local dev environment.
+#
+# Two services:
+#   db    — PostgreSQL 15, the database Odoo runs against
+#   odoo  — Odoo 17 community edition, with our addon mounted in
+#
+# Usage:
+#   docker compose -f connectors/odoo/docker-compose.yml up -d
+#   docker compose -f connectors/odoo/docker-compose.yml exec odoo ...
+#
+# Or, for friendlier UX, use the Makefile in this directory:
+#   cd connectors/odoo && make up
+#
+# The addon directory is volume-mounted, so Python file changes pick
+# up on Odoo reload (Ctrl-C then `make up` again, or use Odoo's
+# `--dev=all` flag inside the container which is already set).
+
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: floatra-odoo-db
+    environment:
+      POSTGRES_USER: odoo
+      POSTGRES_PASSWORD: odoo
+      # Odoo 17 looks for a "postgres" DB at startup; let it create
+      # the actual app database (floatra_dev) on first install via
+      # the manage form.
+      POSTGRES_DB: postgres
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - floatra_odoo_db_data:/var/lib/postgresql/data/pgdata
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U odoo"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    # Local-only — never expose Postgres to the host. Odoo reaches
+    # it via the compose network using the service name 'db'.
+    expose:
+      - "5432"
+
+  odoo:
+    image: odoo:17.0
+    container_name: floatra-odoo
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      # These match odoo.conf — duplicated as env vars so the Odoo
+      # image's entrypoint sees them too (some defaults are read
+      # from environment, not the config file).
+      HOST: db
+      USER: odoo
+      PASSWORD: odoo
+    volumes:
+      # Our addon mounted into Odoo's "extra-addons" path. The
+      # whole `floatra_credit/` folder needs to be visible inside
+      # /mnt/extra-addons because Odoo scans for __manifest__.py
+      # at the *immediate* child level of each addon path entry.
+      - ./floatra_credit:/mnt/extra-addons/floatra_credit
+      # Persist filestore across container restarts.
+      - floatra_odoo_data:/var/lib/odoo
+      # Mount our Odoo config so we don't rely on entrypoint
+      # auto-config logic. Keeps the runtime config in this repo
+      # rather than baked into a Docker image.
+      - ./odoo.conf:/etc/odoo/odoo.conf:ro
+    ports:
+      # Web UI. localhost:8069 inside the dev shell. Never bind to
+      # 0.0.0.0 — this dev environment has no auth hardening.
+      - "127.0.0.1:8069:8069"
+    # `--dev=all` enables auto-reload on file changes + better
+    # error pages. Safe for dev; never set in production.
+    command: >-
+      odoo
+      --config=/etc/odoo/odoo.conf
+      --dev=all
+
+volumes:
+  floatra_odoo_db_data:
+  floatra_odoo_data:

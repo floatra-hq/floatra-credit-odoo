@@ -1,0 +1,10 @@
+{
+  "status": 404,
+  "body": {
+    "success": false,
+    "data": null,
+    "error": "Merchant mer_01 not found",
+    "errorCode": "MERCHANT_NOT_FOUND",
+    "timestamp": "2026-10-01T12:00:00.000Z"
+  }
+}

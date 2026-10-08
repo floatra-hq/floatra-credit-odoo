@@ -1,0 +1,11 @@
+{
+  "secret": "contract-fixture-secret",
+  "headers": {
+    "Content-Type": "application/json",
+    "X-Floatra-Signature": "3ce8120bc3b2c0162db6b784426d70b34af6093c67f41cccda32acf9a557c238",
+    "X-Floatra-Timestamp": "1790856000",
+    "X-Floatra-Event-ID": "dlv_merchant_credit_tier_changed",
+    "X-Floatra-Delivery-Attempt": "1"
+  },
+  "body": "{\"event\":\"merchant.credit_tier_changed\",\"merchantId\":\"mer_01\",\"timestamp\":\"2026-10-01T12:00:00.000Z\",\"previousTier\":\"T0\",\"newTier\":\"T1\",\"previousLimit\":\"150000.00\",\"newLimit\":\"400000.00\",\"reason\":\"Promoted after on-time repayments\",\"changedAt\":\"2026-10-01T12:00:00.000Z\",\"version\":\"1\",\"livemode\":true,\"platformId\":\"plat-1\"}"
+}

@@ -1,0 +1,21 @@
+{
+  "status": 201,
+  "body": {
+    "success": true,
+    "data": {
+      "floatra_merchant_id": "mer_01",
+      "bank_account_id": "mba_01",
+      "bank_code": "058",
+      "bank_name": "GTBank",
+      "account_number_masked": "********89",
+      "account_name": "Nkechi Okafor",
+      "is_primary": true,
+      "mandate_status": "NONE",
+      "is_verified": false,
+      "updated_at": "2026-10-01T12:00:00.000Z"
+    },
+    "error": null,
+    "errorCode": null,
+    "timestamp": "2026-10-01T12:00:00.000Z"
+  }
+}

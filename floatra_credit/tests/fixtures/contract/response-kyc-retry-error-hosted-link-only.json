@@ -1,0 +1,10 @@
+{
+  "status": 400,
+  "body": {
+    "success": false,
+    "data": null,
+    "error": "In production the merchant verifies on Floatra's hosted KYC page. Send no kyc_type, identifier or selfie_base64; send the returned kyc_url to the merchant.",
+    "errorCode": "KYC_HOSTED_LINK_ONLY",
+    "timestamp": "2026-10-01T12:00:00.000Z"
+  }
+}

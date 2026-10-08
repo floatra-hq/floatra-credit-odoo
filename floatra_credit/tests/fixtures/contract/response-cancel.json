@@ -1,0 +1,23 @@
+{
+  "status": 201,
+  "body": {
+    "success": true,
+    "data": {
+      "floatra_order_id": "loan_01",
+      "external_order_id": "S00042",
+      "status": "CANCELLED",
+      "cancelled_at": "2026-10-01T12:00:00.000Z",
+      "reason": "OTHER: Sale order S00042 cancelled in Odoo.",
+      "lender_capacity_released": true,
+      "merchant_credit_restored": true,
+      "lender_recall": {
+        "required": false,
+        "recall_reference": null,
+        "estimated_recall_completion": null
+      }
+    },
+    "error": null,
+    "errorCode": null,
+    "timestamp": "2026-10-01T12:00:00.000Z"
+  }
+}

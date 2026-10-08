@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Adds a "Floatra" notebook page to the standard Odoo customer form
+  (res.partner). All fields are read-only — they're written by the
+  webhook receiver + scheduled credit-sync cron. Manager-only edits
+  would happen via the admin interface, not this user-facing form.
+
+  XPath inserts after the existing 'Sales & Purchase' page so it
+  appears near related commercial info, not buried under Internal
+  Notes.
+-->
+<odoo>
+  <record id="view_partner_form_floatra" model="ir.ui.view">
+    <field name="name">res.partner.form.floatra</field>
+    <field name="model">res.partner</field>
+    <field name="inherit_id" ref="base.view_partner_form"/>
+    <field name="arch" type="xml">
+      <!-- P2-9: form-header buttons. `onboard` is gated on the
+           partner not yet being enrolled. `Get KYC Link` asks Floatra
+           for a hosted KYC link (no BVN/NIN/selfie is sent — the
+           merchant enters them on Floatra's page); it shows for any
+           enrolled partner because Floatra decides whether anything is
+           left to verify (409 when both IDs are verified). `Email KYC
+           Link` opens the mail composer while an unexpired link is
+           stored and the partner has an email. Visibility is enforced
+           server-side too — the model methods raise UserError if
+           invariants don't hold. -->
+      <xpath expr="//sheet" position="before">
+        <header groups="floatra_credit.group_floatra_user">
+          <button name="action_floatra_onboard"
+                  string="Onboard with Floatra"
+                  type="object"
+                  class="oe_highlight"
+                  invisible="floatra_merchant_id"/>
+          <button name="action_floatra_get_kyc_link"
+                  string="Get KYC Link"
+                  type="object"
+                  confirm="Request a new Floatra KYC link for this merchant? Any link sent earlier stops working."
+                  invisible="not floatra_merchant_id"/>
+          <button name="action_floatra_email_kyc_link"
+                  string="Email KYC Link"
+                  type="object"
+                  invisible="not floatra_kyc_url_active or not email"/>
+          <button name="action_floatra_set_bank_account"
+                  string="Update Bank Account"
+                  type="object"
+                  invisible="not floatra_merchant_id"/>
+        </header>
+      </xpath>
+      <xpath expr="//notebook" position="inside">
+        <page string="Floatra" name="floatra"
+              groups="floatra_credit.group_floatra_user">
+          <group>
+            <group string="Identity">
+              <field name="floatra_merchant_id"/>
+              <field name="floatra_enrolled_at"/>
+            </group>
+            <group string="Credit Profile">
+              <field name="floatra_credit_status"/>
+              <field name="floatra_credit_tier"/>
+              <field name="floatra_credit_limit"/>
+            </group>
+          </group>
+          <group string="KYC">
+            <field name="floatra_kyc_status"/>
+            <field name="floatra_liveness_verified"/>
+            <field name="floatra_kyc_url_active" invisible="1"/>
+            <field name="floatra_kyc_url"
+                   widget="CopyClipboardChar"
+                   invisible="not floatra_kyc_url"/>
+            <field name="floatra_kyc_url_expires_at"
+                   invisible="not floatra_kyc_url"/>
+            <div colspan="2" class="text-muted"
+                 invisible="not floatra_kyc_url">
+              Send this link to the merchant (SMS, WhatsApp or email). They
+              open it on their phone, confirm a code sent to their phone
+              number on Floatra, enter their NIN or BVN and take a selfie.
+              It works once; getting a new link revokes this one.
+            </div>
+          </group>
+          <!-- P1-11 phase 2 / ERP spec §3.2: expanded onboard fields
+               distributors capture on the partner form. Editable
+               (unlike the credit-state fields above) since they're
+               the source of truth the connector reads at onboard
+               time. -->
+          <group string="Onboarding Profile">
+            <group string="Trade">
+              <field name="floatra_business_type"/>
+              <field name="floatra_primary_category"/>
+              <field name="floatra_assigned_agent_id"/>
+            </group>
+            <group string="Owner">
+              <field name="floatra_owner_first_name"/>
+              <field name="floatra_owner_last_name"/>
+            </group>
+          </group>
+        </page>
+      </xpath>
+    </field>
+  </record>
+</odoo>

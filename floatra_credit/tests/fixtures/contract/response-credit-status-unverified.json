@@ -1,0 +1,34 @@
+{
+  "status": 200,
+  "body": {
+    "success": true,
+    "data": {
+      "merchant_id": "mer_01",
+      "status": "ACTIVE",
+      "credit_tier": "T0",
+      "max_credit": "0.00",
+      "used_credit": "0.00",
+      "available_credit": "0.00",
+      "lock_status": {
+        "locked": false,
+        "reason": null
+      },
+      "has_active_loan": false,
+      "active_loans": 0,
+      "max_active_loans": 1,
+      "eligible_tenor_days": [
+        14
+      ],
+      "credit_balance": "0.00",
+      "kyc_status": "UNVERIFIED",
+      "kyc_verified_at": null,
+      "liveness_verified": false,
+      "liveness_expires_at": null,
+      "active_loan": null,
+      "checked_at": "2026-10-01T12:00:00.000Z"
+    },
+    "error": null,
+    "errorCode": null,
+    "timestamp": "2026-10-01T12:00:00.000Z"
+  }
+}

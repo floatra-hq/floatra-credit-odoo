@@ -1,0 +1,11 @@
+{
+  "secret": "contract-fixture-secret",
+  "headers": {
+    "Content-Type": "application/json",
+    "X-Floatra-Signature": "eb7218b0a4785d2b8f2caacd53ed64912e1b8eb4ad58d7fff8ce7ca3896b0e22",
+    "X-Floatra-Timestamp": "1790856000",
+    "X-Floatra-Event-ID": "dlv_order_funded",
+    "X-Floatra-Delivery-Attempt": "1"
+  },
+  "body": "{\"event\":\"order.funded\",\"loanId\":\"loan_01\",\"merchantId\":\"mer_01\",\"amount\":\"250000.00\",\"timestamp\":\"2026-10-01T12:00:00.000Z\",\"version\":\"1\",\"livemode\":true,\"platformId\":\"plat-1\"}"
+}

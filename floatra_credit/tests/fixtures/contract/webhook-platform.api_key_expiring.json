@@ -1,0 +1,11 @@
+{
+  "secret": "contract-fixture-secret",
+  "headers": {
+    "Content-Type": "application/json",
+    "X-Floatra-Signature": "a51f49b35e68c9f425e8c1b7e480ff699aef0023e5ff17242a3c06bc3ad71afb",
+    "X-Floatra-Timestamp": "1790856000",
+    "X-Floatra-Event-ID": "dlv_platform_api_key_expiring",
+    "X-Floatra-Delivery-Attempt": "1"
+  },
+  "body": "{\"event\":\"platform.api_key_expiring\",\"platformId\":\"plat-1\",\"credentialMode\":\"live\",\"expiresAt\":\"2026-10-15T00:00:00.000Z\",\"daysRemaining\":14,\"timestamp\":\"2026-10-01T12:00:00.000Z\",\"version\":\"1\",\"livemode\":true}"
+}

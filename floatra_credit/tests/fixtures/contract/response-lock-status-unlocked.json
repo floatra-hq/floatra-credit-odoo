@@ -1,0 +1,21 @@
+{
+  "status": 200,
+  "body": {
+    "success": true,
+    "data": {
+      "merchant_id": "mer_01",
+      "locked": false,
+      "reorder_locked": false,
+      "lock_status": "UNLOCKED",
+      "lock_reason": null,
+      "locked_since": null,
+      "locked_loans": [],
+      "unlock_conditions": null,
+      "cache_ttl_seconds": 900,
+      "checked_at": "2026-10-01T12:00:00.000Z"
+    },
+    "error": null,
+    "errorCode": null,
+    "timestamp": "2026-10-01T12:00:00.000Z"
+  }
+}

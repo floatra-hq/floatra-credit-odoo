@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Adds a Floatra section to Settings → Technical (visible
+  to Floatra managers only). Fields are bound to ir.config_parameter
+  via the @config_parameter decorator on the model side.
+
+  The API key + webhook secret fields use password="True" so they're
+  masked in the UI; Odoo's settings save still writes them clear-text
+  to ir.config_parameter (Odoo's standard treatment of secrets — the
+  table itself is access-restricted).
+-->
+<odoo>
+  <record id="res_config_settings_view_form_floatra" model="ir.ui.view">
+    <field name="name">res.config.settings.view.form.floatra</field>
+    <field name="model">res.config.settings</field>
+    <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+    <field name="arch" type="xml">
+      <!-- Odoo 17 settings syntax (app / block / setting); the pre-17
+           div.settings container no longer exists in the base form. -->
+      <xpath expr="//form" position="inside">
+        <app data-string="Floatra"
+             string="Floatra"
+             name="floatra_credit"
+             groups="floatra_credit.group_floatra_manager">
+          <block title="Floatra API" name="floatra_api">
+            <setting id="floatra_api_base_url_setting">
+              <field name="floatra_api_base_url"/>
+            </setting>
+            <setting id="floatra_platform_id_setting">
+              <field name="floatra_platform_id"/>
+            </setting>
+            <setting id="floatra_api_key_setting">
+              <field name="floatra_api_key" password="True"/>
+            </setting>
+            <setting id="floatra_webhook_secret_setting">
+              <field name="floatra_webhook_secret" password="True"/>
+            </setting>
+          </block>
+          <block title="Behaviour" name="floatra_behaviour">
+            <setting id="floatra_enforcement_mode_setting">
+              <field name="floatra_enforcement_mode"/>
+            </setting>
+          </block>
+        </app>
+      </xpath>
+    </field>
+  </record>
+</odoo>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Adds the floatra_category selection to the product category form. -->
+<odoo>
+  <record id="view_product_category_form_floatra" model="ir.ui.view">
+    <field name="name">product.category.form.floatra</field>
+    <field name="model">product.category</field>
+    <field name="inherit_id" ref="product.product_category_form_view"/>
+    <field name="arch" type="xml">
+      <xpath expr="//group" position="inside">
+        <field name="floatra_category"/>
+      </xpath>
+    </field>
+  </record>
+</odoo>

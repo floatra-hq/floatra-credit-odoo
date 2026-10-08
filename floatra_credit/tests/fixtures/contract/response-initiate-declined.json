@@ -1,0 +1,19 @@
+{
+  "status": 201,
+  "body": {
+    "success": true,
+    "data": {
+      "floatra_order_id": "ord_01",
+      "external_order_id": "S00042",
+      "decision": "DECLINED",
+      "decision_at": "2026-10-01T12:00:00.000Z",
+      "decline": {
+        "reason_code": "CREDIT_002",
+        "reason_text": "Order is above the merchant's limit — try a smaller amount"
+      }
+    },
+    "error": null,
+    "errorCode": null,
+    "timestamp": "2026-10-01T12:00:00.000Z"
+  }
+}

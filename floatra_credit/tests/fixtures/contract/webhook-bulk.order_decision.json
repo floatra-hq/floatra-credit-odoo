@@ -1,0 +1,11 @@
+{
+  "secret": "contract-fixture-secret",
+  "headers": {
+    "Content-Type": "application/json",
+    "X-Floatra-Signature": "57c713fc9a0a8a2dc5dfed42f92f4e9e034ac205ca05d645f7eb7fbdd119b839",
+    "X-Floatra-Timestamp": "1790856000",
+    "X-Floatra-Event-ID": "dlv_bulk_order_decision",
+    "X-Floatra-Delivery-Attempt": "1"
+  },
+  "body": "{\"event\":\"bulk.order_decision\",\"bulkBatchId\":\"bat_01\",\"bulkPosition\":1,\"bulkTotal\":1,\"externalOrderId\":\"S00042\",\"externalMerchantId\":\"77\",\"decision\":\"APPROVED\",\"envelope\":{\"floatra_order_id\":\"ord_01\",\"floatra_loan_id\":\"loan_01\",\"external_order_id\":\"S00042\",\"decision\":\"APPROVED\",\"decision_at\":\"2026-10-01T12:00:00.000Z\",\"credit\":{\"approved_amount\":\"250000.00\",\"interest\":\"12500.00\",\"repayment_amount\":\"262500.00\",\"tenure_days\":14,\"due_date\":\"2026-10-15T00:00:00.000Z\",\"lender_id\":\"len_01\",\"status\":\"APPROVED\"}},\"timestamp\":\"2026-10-01T12:00:00.000Z\",\"version\":\"1\",\"livemode\":true,\"platformId\":\"plat-1\"}"
+}

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Two scheduled jobs:
+
+    1. Credit-status sync (every 1 hour) — refreshes credit status, tier,
+       limit and KYC on all enrolled partners via
+       GET /v1/partner/merchants/:id/credit-status. Batched 50 partners at
+       a time with a 1s pause to stay polite to the gateway's rate limits.
+
+    2. Undelivered-webhook polling (daily) — polls
+       GET /v1/partner/webhooks/undelivered for events Floatra could not
+       deliver, replays each through the same handlers the live receiver
+       uses (deduplicated by event id), then acknowledges it.
+
+  (The 30-minute "cancel expired approvals" job was removed in 17.0.0.3.0:
+  Floatra retired the 2-hour approval window.)
+
+  Both jobs are idempotent — safe to run twice or after downtime.
+-->
+<odoo>
+  <record id="cron_credit_status_sync" model="ir.cron">
+    <field name="name">Floatra: Sync Credit Status</field>
+    <field name="model_id" ref="base.model_res_partner"/>
+    <field name="state">code</field>
+    <field name="code">model._floatra_cron_sync_credit_status()</field>
+    <field name="interval_number">1</field>
+    <field name="interval_type">hours</field>
+    <field name="numbercall">-1</field>
+    <field name="active" eval="True"/>
+    <field name="doall" eval="False"/>
+  </record>
+
+  <record id="cron_undelivered_webhook_poll" model="ir.cron">
+    <field name="name">Floatra: Poll Undelivered Webhooks</field>
+    <field name="model_id" ref="model_floatra_webhook_log"/>
+    <field name="state">code</field>
+    <field name="code">model._floatra_cron_poll_undelivered_webhooks()</field>
+    <field name="interval_number">1</field>
+    <field name="interval_type">days</field>
+    <field name="numbercall">-1</field>
+    <field name="active" eval="True"/>
+    <field name="doall" eval="False"/>
+  </record>
+</odoo>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  P2-9 / Spec §3 — restructure wizard surface.
+
+  The button on the sale.order form (`action_floatra_restructure`)
+  opens this dialog. The wizard's own `action_restructure` POSTs to
+  the gateway and posts a chatter line on the sale order.
+-->
+<odoo>
+  <record id="view_floatra_restructure_wizard_form" model="ir.ui.view">
+    <field name="name">floatra.restructure.wizard.form</field>
+    <field name="model">floatra.restructure.wizard</field>
+    <field name="arch" type="xml">
+      <form string="Restructure Loan">
+        <sheet>
+          <group>
+            <field name="sale_order_id" readonly="1"/>
+          </group>
+          <group string="New terms">
+            <field name="new_tenure_days"/>
+            <field name="lender_approval_reference"
+                   placeholder="LAR-2026-001"/>
+            <field name="approved_by_label"
+                   placeholder="Recovery Manager"/>
+          </group>
+          <group string="Audit">
+            <field name="reason" nolabel="1"
+                   placeholder="Free-form reason (max 500 chars)"/>
+          </group>
+        </sheet>
+        <footer>
+          <button name="action_restructure"
+                  string="Restructure"
+                  type="object" class="btn-primary"/>
+          <button string="Cancel" class="btn-secondary"
+                  special="cancel"/>
+        </footer>
+      </form>
+    </field>
+  </record>
+</odoo>

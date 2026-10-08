@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_floatra_webhook_log_user,floatra.webhook.log.user,model_floatra_webhook_log,floatra_credit.group_floatra_user,1,0,0,0
+access_floatra_webhook_log_manager,floatra.webhook.log.manager,model_floatra_webhook_log,floatra_credit.group_floatra_manager,1,1,1,1
+access_floatra_delivery_wizard,floatra.delivery.confirm.wizard,model_floatra_delivery_confirm_wizard,floatra_credit.group_floatra_user,1,1,1,1
+access_floatra_repayment_wizard,floatra.cash.repayment.wizard,model_floatra_cash_repayment_wizard,floatra_credit.group_floatra_user,1,1,1,1
+access_floatra_bank_account_wizard,floatra.bank.account.wizard,model_floatra_bank_account_wizard,floatra_credit.group_floatra_user,1,1,1,1
+access_floatra_restructure_wizard,floatra.restructure.wizard,model_floatra_restructure_wizard,floatra_credit.group_floatra_user,1,1,1,1

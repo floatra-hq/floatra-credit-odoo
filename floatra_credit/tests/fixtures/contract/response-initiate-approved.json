@@ -1,0 +1,25 @@
+{
+  "status": 201,
+  "body": {
+    "success": true,
+    "data": {
+      "floatra_order_id": "ord_01",
+      "floatra_loan_id": "loan_01",
+      "external_order_id": "S00042",
+      "decision": "APPROVED",
+      "decision_at": "2026-10-01T12:00:00.000Z",
+      "credit": {
+        "approved_amount": "250000.00",
+        "interest": "12500.00",
+        "repayment_amount": "262500.00",
+        "tenure_days": 14,
+        "due_date": "2026-10-15T00:00:00.000Z",
+        "lender_id": "len_01",
+        "status": "APPROVED"
+      }
+    },
+    "error": null,
+    "errorCode": null,
+    "timestamp": "2026-10-01T12:00:00.000Z"
+  }
+}

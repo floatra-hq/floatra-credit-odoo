@@ -1,0 +1,20 @@
+{
+  "status": 201,
+  "body": {
+    "success": true,
+    "data": {
+      "floatra_order_id": "loan_01",
+      "loan_id": "loan_01",
+      "delivery_confirmed": true,
+      "delivery_confirmed_at": "2026-10-01T11:30:00.000Z",
+      "status": "ACTIVE",
+      "repayment_due_date": "2026-10-15T00:00:00.000Z",
+      "repayment_amount": "262500.00",
+      "repayment_channel": "PAYSTACK_MANUAL",
+      "idempotent": false
+    },
+    "error": null,
+    "errorCode": null,
+    "timestamp": "2026-10-01T12:00:00.000Z"
+  }
+}

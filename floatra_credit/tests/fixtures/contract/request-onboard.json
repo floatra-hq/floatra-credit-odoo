@@ -1,0 +1,18 @@
+{
+  "external_merchant_id": "77",
+  "name": "Mama Nkechi Stores",
+  "phone": "+2348031234567",
+  "business_type": "RETAILER",
+  "category": "FMCG",
+  "assigned_agent_id": "agt_01",
+  "owner": {
+    "first_name": "Nkechi",
+    "last_name": "Okafor",
+    "email": "nkechi@example.com"
+  },
+  "address": {
+    "street": "12 Market Road",
+    "lga": "Ikeja",
+    "state": "Lagos"
+  }
+}

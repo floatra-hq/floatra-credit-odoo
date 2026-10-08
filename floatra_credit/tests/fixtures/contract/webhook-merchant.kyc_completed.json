@@ -1,0 +1,11 @@
+{
+  "secret": "contract-fixture-secret",
+  "headers": {
+    "Content-Type": "application/json",
+    "X-Floatra-Signature": "073399da57383bf37da308d209519a7220b4fc72a44b953e099baba06e5b2b83",
+    "X-Floatra-Timestamp": "1790856000",
+    "X-Floatra-Event-ID": "dlv_merchant_kyc_completed",
+    "X-Floatra-Delivery-Attempt": "1"
+  },
+  "body": "{\"event\":\"merchant.kyc_completed\",\"merchantId\":\"mer_01\",\"timestamp\":\"2026-10-01T12:00:00.000Z\",\"verificationTier\":\"FULLY_VERIFIED\",\"ninVerified\":true,\"bvnVerified\":true,\"verifiedAt\":\"2026-10-01T12:00:00.000Z\",\"version\":\"1\",\"livemode\":true,\"platformId\":\"plat-1\"}"
+}

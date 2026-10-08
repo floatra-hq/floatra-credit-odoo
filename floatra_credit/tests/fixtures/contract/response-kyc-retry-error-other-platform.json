@@ -1,0 +1,10 @@
+{
+  "status": 403,
+  "body": {
+    "success": false,
+    "data": null,
+    "error": "Merchant mer_01 does not belong to your platform",
+    "errorCode": "MERCHANT_NOT_ON_PLATFORM",
+    "timestamp": "2026-10-01T12:00:00.000Z"
+  }
+}

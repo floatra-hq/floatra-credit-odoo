@@ -1,0 +1,10 @@
+{
+  "status": 409,
+  "body": {
+    "success": false,
+    "data": null,
+    "error": "This merchant has already verified both its NIN and BVN. There is nothing left to verify.",
+    "errorCode": "KYC_ALREADY_VERIFIED",
+    "timestamp": "2026-10-01T12:00:00.000Z"
+  }
+}

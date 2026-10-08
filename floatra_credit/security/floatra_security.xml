@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Floatra access groups. Two groups + an implicit category:
+
+    floatra_credit.group_floatra_user
+      Sales reps + ops users who request credit, confirm deliveries,
+      and record repayments. Read access to Floatra fields on
+      customers + sale orders; can run the wizards.
+
+    floatra_credit.group_floatra_manager
+      Inherits user. Adds write access to settings and webhook log,
+      and ability to install / configure the connector.
+
+  The webhook controller runs sudo() so it isn't blocked by these
+  groups — operator review of inbound events happens via the
+  webhook-log read access granted to the user group above.
+-->
+<odoo>
+  <record id="module_category_floatra" model="ir.module.category">
+    <field name="name">Floatra</field>
+    <field name="description">Embedded inventory credit for Nigerian distributors</field>
+    <field name="sequence">10</field>
+  </record>
+
+  <record id="group_floatra_user" model="res.groups">
+    <field name="name">User</field>
+    <field name="category_id" ref="module_category_floatra"/>
+    <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+  </record>
+
+  <record id="group_floatra_manager" model="res.groups">
+    <field name="name">Manager</field>
+    <field name="category_id" ref="module_category_floatra"/>
+    <field name="implied_ids" eval="[(4, ref('group_floatra_user'))]"/>
+    <field name="users" eval="[(4, ref('base.user_admin'))]"/>
+  </record>
+</odoo>

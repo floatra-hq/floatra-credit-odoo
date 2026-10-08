@@ -1,0 +1,11 @@
+{
+  "secret": "contract-fixture-secret",
+  "headers": {
+    "Content-Type": "application/json",
+    "X-Floatra-Signature": "a1e2f2cdeafdc37a3a803931fdb561fdba8203e2f19e0f9ec04c27d1e6799e80",
+    "X-Floatra-Timestamp": "1790856000",
+    "X-Floatra-Event-ID": "dlv_merchant_reorder_unlocked",
+    "X-Floatra-Delivery-Attempt": "1"
+  },
+  "body": "{\"event\":\"merchant.reorder_unlocked\",\"merchantId\":\"mer_01\",\"merchantExternalId\":\"77\",\"reason\":\"REPAID\",\"timestamp\":\"2026-10-01T12:00:00.000Z\",\"version\":\"1\",\"livemode\":true,\"platformId\":\"plat-1\"}"
+}

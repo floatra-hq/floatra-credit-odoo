@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Top-level Floatra menu under the main navigation. Three children:
+
+    Dashboard          (placeholder — links to platform health)
+    Webhook Logs       (audit trail of inbound webhooks)
+    Record Repayment   (opens the cash repayment wizard)
+
+  Manager-only items (config, settings) live under Settings →
+  Technical → Floatra, populated by res_config_settings_views.xml.
+-->
+<odoo>
+  <record id="action_floatra_webhook_log" model="ir.actions.act_window">
+    <field name="name">Floatra Webhook Logs</field>
+    <field name="res_model">floatra.webhook.log</field>
+    <field name="view_mode">tree,form</field>
+    <field name="help" type="html">
+      <p class="o_view_nocontent_smiling_face">
+        No Floatra webhooks received yet.
+      </p>
+      <p>
+        Inbound webhooks from Floatra (decisions, lifecycle events,
+        merchant state changes) will appear here once your platform
+        starts receiving traffic.
+      </p>
+    </field>
+  </record>
+
+  <record id="action_floatra_cash_repayment_wizard" model="ir.actions.act_window">
+    <field name="name">Record Cash Repayment</field>
+    <field name="res_model">floatra.cash.repayment.wizard</field>
+    <field name="view_mode">form</field>
+    <field name="target">new</field>
+  </record>
+
+  <menuitem id="menu_floatra_root"
+            name="Floatra"
+            sequence="60"
+            groups="floatra_credit.group_floatra_user"/>
+
+  <menuitem id="menu_floatra_webhook_log"
+            parent="menu_floatra_root"
+            name="Webhook Logs"
+            action="action_floatra_webhook_log"
+            sequence="10"/>
+
+  <menuitem id="menu_floatra_repayment"
+            parent="menu_floatra_root"
+            name="Record Cash Repayment"
+            action="action_floatra_cash_repayment_wizard"
+            sequence="20"/>
+</odoo>

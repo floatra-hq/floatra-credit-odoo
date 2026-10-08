@@ -1,0 +1,10 @@
+{
+  "status": 422,
+  "body": {
+    "success": false,
+    "data": null,
+    "error": "That merchant is a production merchant and this request authenticated with your sandbox API key. Use the API key for the merchant's own realm.",
+    "errorCode": "MERCHANT_004",
+    "timestamp": "2026-10-01T12:00:00.000Z"
+  }
+}

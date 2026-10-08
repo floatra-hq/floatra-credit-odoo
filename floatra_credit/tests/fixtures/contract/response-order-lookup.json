@@ -1,0 +1,18 @@
+{
+  "status": 200,
+  "body": {
+    "success": true,
+    "data": {
+      "external_order_id": "S00042",
+      "floatra_order_id": "ord_01",
+      "floatra_loan_id": "loan_01",
+      "loan_status": "FUNDED",
+      "due_date": "2026-10-15T00:00:00.000Z",
+      "disbursed_at": "2026-10-01T12:00:00.000Z",
+      "created_at": "2026-10-01T12:00:00.000Z"
+    },
+    "error": null,
+    "errorCode": null,
+    "timestamp": "2026-10-01T12:00:00.000Z"
+  }
+}

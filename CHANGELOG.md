@@ -1,0 +1,28 @@
+# Changelog
+
+All notable changes to the Floatra Odoo connector (`floatra_credit`).
+Versions follow the addon's `__manifest__.py` (`<odoo series>.<major>.<minor>.<patch>`).
+
+## [17.0.0.3.0]
+
+First public release, for Odoo 17.0. MIT licence.
+
+- **Matches Floatra's partner API end to end** (#1302). Every call goes to
+  `/v1/partner/...` on a host-only base URL (stored `/v1` and `api.floatra.io`
+  values are migrated); responses are unwrapped from Floatra's envelope with
+  its `errorCode`; money is sent as decimal-Naira strings. Onboarding stores
+  the Floatra merchant id and never sends or stores BVN/NIN. Sale orders store
+  the Floatra Loan id, which every lifecycle call uses. Webhooks verify the
+  Unix-seconds signature, are anchored to the platform and realm (`livemode`),
+  read flat payloads, and `order.funded` lifts the dispatch gate. KYC goes
+  through Floatra's hosted link. Contract tests run against request, response
+  and webhook fixtures rendered by Floatra core.
+- **Installs on Odoo 17** (#1313). The sale-order status banners and the
+  settings form are rewritten for Odoo 17's view rules; the Odoo runtime suite
+  passes (57 tests).
+- **A confirmed reorder lock is kept** (#1313). When a live lock-status refresh
+  comes back locked, the request is refused with a notification and the lock is
+  stored, so a retry is refused without calling Floatra again. An unreachable
+  Floatra still refuses (fail-closed).
+- **The financed amount is the tax-inclusive order total** (founder ruling
+  2026-10-08): the loan covers the full invoice the merchant owes, VAT included.

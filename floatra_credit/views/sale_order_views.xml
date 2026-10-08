@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Sale order view extension:
+
+    - "Request Financing" button in the header (visible when
+      partner is enrolled and decision is not_requested)
+    - "Confirm Floatra Delivery" button (visible after disbursement
+      but before delivery has been confirmed)
+    - Floatra status banner under the customer field
+    - Floatra notebook page with decision + envelope fields
+-->
+<odoo>
+  <record id="view_order_form_floatra" model="ir.ui.view">
+    <field name="name">sale.order.form.floatra</field>
+    <field name="model">sale.order</field>
+    <field name="inherit_id" ref="sale.view_order_form"/>
+    <field name="arch" type="xml">
+
+      <!-- Header buttons -->
+      <xpath expr="//header" position="inside">
+        <button name="action_request_floatra_credit"
+                type="object"
+                string="Request Financing"
+                class="btn-primary"
+                invisible="floatra_decision != 'not_requested' or not partner_id"
+                groups="floatra_credit.group_floatra_user"/>
+        <button name="action_confirm_floatra_delivery"
+                type="object"
+                string="Confirm Floatra Delivery"
+                class="btn-primary"
+                invisible="not floatra_disbursed or floatra_delivery_confirmed"
+                groups="floatra_credit.group_floatra_user"/>
+        <button name="action_floatra_restructure"
+                type="object"
+                string="Restructure Loan"
+                invisible="not floatra_disbursed"
+                groups="floatra_credit.group_floatra_user"/>
+      </xpath>
+
+      <!-- Status banner immediately above the order content -->
+      <xpath expr="//sheet" position="before">
+        <!-- The banners' modifiers read these; the only other occurrence
+             is the Floatra page, which is group-restricted, and Odoo 17
+             refuses a modifier on a field restricted to a group. -->
+        <field name="floatra_decision" invisible="1"/>
+        <field name="floatra_disbursed" invisible="1"/>
+        <div class="alert alert-info"
+             role="alert"
+             invisible="floatra_decision != 'approved' or floatra_disbursed">
+          <strong>Credit approved.</strong> Waiting for Floatra funding
+          before dispatch is allowed.
+        </div>
+        <div class="alert alert-warning"
+             role="alert"
+             invisible="floatra_decision != 'waitlisted'">
+          <strong>Waitlisted.</strong> Floatra has no lender capacity right
+          now — you'll be notified when funding becomes available.
+        </div>
+        <div class="alert alert-danger"
+             role="alert"
+             invisible="floatra_decision != 'declined'">
+          <strong>Floatra declined this order.</strong>
+          <span><field name="floatra_decision_reason"/></span>
+        </div>
+      </xpath>
+
+      <!-- Floatra page in the notebook -->
+      <xpath expr="//notebook" position="inside">
+        <page string="Floatra" name="floatra"
+              groups="floatra_credit.group_floatra_user">
+          <group>
+            <group string="Decision">
+              <field name="floatra_order_id"/>
+              <field name="floatra_loan_id"/>
+              <field name="floatra_loan_request_id"/>
+              <field name="floatra_decision"/>
+              <field name="floatra_tenure_days"/>
+            </group>
+            <group string="Amounts">
+              <field name="floatra_approved_amount"/>
+              <field name="floatra_interest_amount"/>
+              <field name="floatra_repayment_amount"/>
+              <field name="floatra_repayment_due_date"/>
+            </group>
+          </group>
+          <group string="Lifecycle">
+            <field name="floatra_disbursed"/>
+            <field name="floatra_delivery_confirmed"/>
+            <field name="floatra_delivery_installments"/>
+          </group>
+          <group string="Decision Detail" invisible="not floatra_decision_reason">
+            <field name="floatra_decision_reason" nolabel="1"/>
+          </group>
+        </page>
+      </xpath>
+    </field>
+  </record>
+</odoo>

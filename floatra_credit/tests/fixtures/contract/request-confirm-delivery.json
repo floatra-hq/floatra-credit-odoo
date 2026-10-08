@@ -1,0 +1,16 @@
+{
+  "delivered_at": "2026-10-01T11:30:00+00:00",
+  "notes": "Delivered to the shop",
+  "confirmed_by": {
+    "agent_id": "agt_01",
+    "agent_name": "Tunde Bello",
+    "confirmation_method": "ERP_CONSOLE"
+  },
+  "location": {
+    "lat": 6.6018,
+    "lng": 3.3515,
+    "accuracy_meters": 12,
+    "recorded_at": "2026-10-01T11:29:00+00:00"
+  },
+  "proof_of_delivery_url": "https://erp.example.com/pod/S00042.jpg"
+}

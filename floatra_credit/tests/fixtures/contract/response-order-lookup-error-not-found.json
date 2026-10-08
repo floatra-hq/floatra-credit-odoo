@@ -1,0 +1,10 @@
+{
+  "status": 404,
+  "body": {
+    "success": false,
+    "data": null,
+    "error": "No order on this platform with that external id",
+    "errorCode": "ORDER_NOT_FOUND",
+    "timestamp": "2026-10-01T12:00:00.000Z"
+  }
+}

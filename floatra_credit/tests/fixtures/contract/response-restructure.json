@@ -1,0 +1,19 @@
+{
+  "status": 201,
+  "body": {
+    "success": true,
+    "data": {
+      "floatra_order_id": "loan_01",
+      "status": "RESTRUCTURED",
+      "new_due_date": "2026-10-31T00:00:00.000Z",
+      "new_tenure_days": 30,
+      "principal": "250000.00",
+      "interest": "12500.00",
+      "capitalised_late_fee": "1500.00",
+      "restructure_count": 1
+    },
+    "error": null,
+    "errorCode": null,
+    "timestamp": "2026-10-01T12:00:00.000Z"
+  }
+}

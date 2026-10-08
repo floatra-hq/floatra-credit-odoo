@@ -1,0 +1,11 @@
+{
+  "secret": "contract-fixture-secret",
+  "headers": {
+    "Content-Type": "application/json",
+    "X-Floatra-Signature": "8283337d6a9a830ccacd8c2bf3c7ac67bf578f8d671c56621e09d7ec33351ddb",
+    "X-Floatra-Timestamp": "1790856000",
+    "X-Floatra-Event-ID": "dlv_platform_suspended",
+    "X-Floatra-Delivery-Attempt": "1"
+  },
+  "body": "{\"event\":\"platform.suspended\",\"platformId\":\"plat-1\",\"suspendedAt\":\"2026-10-01T12:00:00.000Z\",\"timestamp\":\"2026-10-01T12:00:00.000Z\",\"version\":\"1\",\"livemode\":true}"
+}

@@ -1,0 +1,11 @@
+{
+  "secret": "contract-fixture-secret",
+  "headers": {
+    "Content-Type": "application/json",
+    "X-Floatra-Signature": "dd5ea5d3ba0dd1f202ae01e45d34f5e7d80fffcf09d9d763c4afa8eeaaabfc0a",
+    "X-Floatra-Timestamp": "1790856000",
+    "X-Floatra-Event-ID": "dlv_order_overdue",
+    "X-Floatra-Delivery-Attempt": "1"
+  },
+  "body": "{\"event\":\"order.overdue\",\"loanId\":\"loan_01\",\"merchantId\":\"mer_01\",\"amount\":\"262500.00\",\"timestamp\":\"2026-10-01T12:00:00.000Z\",\"dailyLateFee\":\"500.00\",\"accruedLateFee\":\"1500.00\",\"daysOverdue\":3,\"version\":\"1\",\"livemode\":true,\"platformId\":\"plat-1\"}"
+}

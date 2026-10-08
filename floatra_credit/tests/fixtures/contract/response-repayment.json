@@ -1,0 +1,20 @@
+{
+  "status": 201,
+  "body": {
+    "success": true,
+    "data": {
+      "floatra_repayment_id": "rep_01",
+      "floatra_order_id": "loan_01",
+      "reference": "RCPT-0042",
+      "amount": "100000.00",
+      "source": "MANUAL_CASH",
+      "collected_at": "2026-10-01T11:00:00+00:00",
+      "recorded_at": "2026-10-01T12:00:00.000Z",
+      "outstanding_balance": "162500.00",
+      "credit_balance_on_account": "0.00"
+    },
+    "error": null,
+    "errorCode": null,
+    "timestamp": "2026-10-01T12:00:00.000Z"
+  }
+}

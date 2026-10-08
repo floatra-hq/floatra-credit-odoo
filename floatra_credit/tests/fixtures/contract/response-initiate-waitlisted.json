@@ -1,0 +1,20 @@
+{
+  "status": 201,
+  "body": {
+    "success": true,
+    "data": {
+      "floatra_order_id": "ord_01",
+      "external_order_id": "S00042",
+      "decision": "WAITLISTED",
+      "waitlist": {
+        "loan_request_id": "lr_01",
+        "position": 3,
+        "expires_at": "2026-10-02T12:00:00.000Z",
+        "message": "All lenders are at capacity. Queue position 3."
+      }
+    },
+    "error": null,
+    "errorCode": null,
+    "timestamp": "2026-10-01T12:00:00.000Z"
+  }
+}

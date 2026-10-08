@@ -1,0 +1,11 @@
+{
+  "secret": "contract-fixture-secret",
+  "headers": {
+    "Content-Type": "application/json",
+    "X-Floatra-Signature": "f683bdbf84d731db4acc4409061aa7bf4ce9e61309d7fb9c56cc0e4c9a3d108f",
+    "X-Floatra-Timestamp": "1790856000",
+    "X-Floatra-Event-ID": "dlv_vendor_suspension_requested",
+    "X-Floatra-Delivery-Attempt": "1"
+  },
+  "body": "{\"event\":\"vendor.suspension_requested\",\"merchantId\":\"mer_01\",\"merchantExternalId\":\"77\",\"reason\":\"OVERDUE_7_DAYS\",\"timestamp\":\"2026-10-01T12:00:00.000Z\",\"version\":\"1\",\"livemode\":true,\"platformId\":\"plat-1\"}"
+}

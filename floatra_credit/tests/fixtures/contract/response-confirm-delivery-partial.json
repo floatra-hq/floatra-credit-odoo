@@ -1,0 +1,22 @@
+{
+  "status": 201,
+  "body": {
+    "success": true,
+    "data": {
+      "floatra_order_id": "loan_01",
+      "delivery_confirmed": false,
+      "delivery_confirmed_at": null,
+      "delivery_installment": 1,
+      "delivered_amount": "100000.00",
+      "cumulative_delivered_amount": "100000.00",
+      "remaining_undelivered_amount": "150000.00",
+      "undelivered_handling": "DEFER_DELIVERY",
+      "next_installment_due_at": "2026-10-04T12:00:00.000Z",
+      "max_installments": 3,
+      "idempotent": false
+    },
+    "error": null,
+    "errorCode": null,
+    "timestamp": "2026-10-01T12:00:00.000Z"
+  }
+}

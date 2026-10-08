@@ -1,0 +1,11 @@
+{
+  "external_merchant_id": "77",
+  "external_order_id": "S00042",
+  "amount": "250000.00",
+  "category": "FMCG",
+  "tenure_days": 14,
+  "metadata": {
+    "erp_type": "ODOO",
+    "source": "erp_console"
+  }
+}

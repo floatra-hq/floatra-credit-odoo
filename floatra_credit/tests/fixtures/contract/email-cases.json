@@ -1,0 +1,82 @@
+[
+  {
+    "email": "shop@example.com",
+    "isEmail": true
+  },
+  {
+    "email": "ade.o@x.ng",
+    "isEmail": true
+  },
+  {
+    "email": "a+tag@sub.example.com.ng",
+    "isEmail": true
+  },
+  {
+    "email": "A_B-c@x-y.ng",
+    "isEmail": true
+  },
+  {
+    "email": "o'brien@x.ng",
+    "isEmail": true
+  },
+  {
+    "email": "ade..o@x.ng",
+    "isEmail": false
+  },
+  {
+    "email": ".a@x.ng",
+    "isEmail": false
+  },
+  {
+    "email": "a.@x.ng",
+    "isEmail": false
+  },
+  {
+    "email": "a@x.ng.",
+    "isEmail": false
+  },
+  {
+    "email": "a@-x.ng",
+    "isEmail": false
+  },
+  {
+    "email": "a@x-.ng",
+    "isEmail": false
+  },
+  {
+    "email": "a@x..ng",
+    "isEmail": false
+  },
+  {
+    "email": "a@x_y.ng",
+    "isEmail": false
+  },
+  {
+    "email": "ade@x.n",
+    "isEmail": false
+  },
+  {
+    "email": "user@[1.2.3.4]",
+    "isEmail": false
+  },
+  {
+    "email": "user@1.2.3.4",
+    "isEmail": false
+  },
+  {
+    "email": "x@localhost",
+    "isEmail": false
+  },
+  {
+    "email": "a@b.c0",
+    "isEmail": false
+  },
+  {
+    "email": "a@x.ng, b@x.ng",
+    "isEmail": false
+  },
+  {
+    "email": "Shop <s@x.ng>",
+    "isEmail": false
+  }
+]

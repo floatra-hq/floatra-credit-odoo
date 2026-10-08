@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  P2-9 / Spec §3 — bank-account wizard surface.
+
+  The button on the partner form (`action_floatra_set_bank_account`)
+  opens this dialog. The wizard's own `action_save` performs the
+  POST and posts a masked chatter line. Pre-filling
+  default_partner_id keeps the partner field auto-bound + read-only.
+-->
+<odoo>
+  <record id="view_floatra_bank_account_wizard_form" model="ir.ui.view">
+    <field name="name">floatra.bank.account.wizard.form</field>
+    <field name="model">floatra.bank.account.wizard</field>
+    <field name="arch" type="xml">
+      <form string="Update Floatra Bank Account">
+        <sheet>
+          <group>
+            <field name="partner_id" readonly="1"/>
+          </group>
+          <group string="Account">
+            <field name="bank_code" placeholder="058"/>
+            <field name="bank_name" placeholder="GTBank"/>
+            <field name="account_number" placeholder="0123456789"/>
+            <field name="account_name" placeholder="ACME LIMITED"/>
+            <field name="is_primary"/>
+          </group>
+          <div class="alert alert-info" role="alert">
+            <strong>Encryption notice:</strong> Floatra stores the
+            account number encrypted at rest (AES-256-GCM) and
+            returns only the last 2 digits in admin views.
+          </div>
+        </sheet>
+        <footer>
+          <button name="action_save" string="Save to Floatra"
+                  type="object" class="btn-primary"/>
+          <button string="Cancel" class="btn-secondary"
+                  special="cancel"/>
+        </footer>
+      </form>
+    </field>
+  </record>
+</odoo>

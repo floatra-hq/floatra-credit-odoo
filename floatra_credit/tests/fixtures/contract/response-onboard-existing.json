@@ -1,0 +1,18 @@
+{
+  "status": 201,
+  "body": {
+    "success": true,
+    "data": {
+      "floatra_merchant_id": "mer_01",
+      "external_merchant_id": "77",
+      "name": "Mama Nkechi Stores",
+      "status": "ACTIVE",
+      "kyc_status": "UNVERIFIED",
+      "message": "Merchant already onboarded; returning existing mapping.",
+      "created_at": "2026-10-01T12:00:00.000Z"
+    },
+    "error": null,
+    "errorCode": null,
+    "timestamp": "2026-10-01T12:00:00.000Z"
+  }
+}

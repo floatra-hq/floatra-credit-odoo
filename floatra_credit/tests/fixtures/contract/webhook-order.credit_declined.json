@@ -1,0 +1,11 @@
+{
+  "secret": "contract-fixture-secret",
+  "headers": {
+    "Content-Type": "application/json",
+    "X-Floatra-Signature": "8de4fa2594128237d0f7a14cd7fe84076c1f45f055ef9ed3c0d6acc713fee9a8",
+    "X-Floatra-Timestamp": "1790856000",
+    "X-Floatra-Event-ID": "dlv_order_credit_declined",
+    "X-Floatra-Delivery-Attempt": "1"
+  },
+  "body": "{\"event\":\"order.credit_declined\",\"loanRequestId\":\"lr_01\",\"merchantId\":\"mer_01\",\"merchantExternalId\":\"77\",\"externalOrderId\":\"S00042\",\"amount\":\"250000.00\",\"reason\":\"Order is above the merchant's limit — try a smaller amount\",\"reasonCode\":\"CREDIT_LIMIT_EXCEEDED\",\"timestamp\":\"2026-10-01T12:00:00.000Z\",\"version\":\"1\",\"livemode\":true,\"platformId\":\"plat-1\"}"
+}

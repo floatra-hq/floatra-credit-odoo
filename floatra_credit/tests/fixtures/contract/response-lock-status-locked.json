@@ -1,0 +1,28 @@
+{
+  "status": 200,
+  "body": {
+    "success": true,
+    "data": {
+      "merchant_id": "mer_01",
+      "locked": true,
+      "reorder_locked": true,
+      "lock_status": "LOCKED",
+      "lock_reason": "OVERDUE",
+      "locked_since": "2026-10-01T12:00:00.000Z",
+      "locked_loans": [
+        {
+          "floatra_order_id": "loan_01",
+          "external_order_id": "S00042",
+          "overdue_amount": "262500.00",
+          "days_overdue": 3
+        }
+      ],
+      "unlock_conditions": "Full repayment of outstanding balance required.",
+      "cache_ttl_seconds": 60,
+      "checked_at": "2026-10-01T12:00:00.000Z"
+    },
+    "error": null,
+    "errorCode": null,
+    "timestamp": "2026-10-01T12:00:00.000Z"
+  }
+}

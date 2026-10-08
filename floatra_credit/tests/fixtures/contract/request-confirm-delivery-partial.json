@@ -1,0 +1,7 @@
+{
+  "delivered_at": "2026-10-01T11:30:00+00:00",
+  "delivery_installment": 1,
+  "delivered_amount": "100000.00",
+  "undelivered_handling": "DEFER_DELIVERY",
+  "defer_delivery_days": 3
+}
