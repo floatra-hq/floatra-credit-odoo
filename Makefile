@@ -61,7 +61,8 @@ test:  ## Run the addon's test suite against $(DB).
 
 plain-test:  ## Contract + client tests against core-rendered fixtures (no Odoo).
 	cd $(ADDON)/tests && python3 -m unittest \
-	  test_contract test_kyc_link test_floatra_api_redaction test_kyc_link_access_static
+	  test_contract test_kyc_link test_floatra_api_redaction test_kyc_link_access_static \
+	  test_config_secret_access_static
 
 ## --- Debugging ---
 

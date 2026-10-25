@@ -56,10 +56,14 @@ This is where the integration gets a lot less scary than it sounds. **Floatra ne
 
 | Who | Gets | From whom | Stored where |
 |---|---|---|---|
-| Distributor | Floatra API key (`live_pk_*`; sandbox: `sbx_pk_*`) | Floatra account team | Odoo `Settings → Floatra` |
-| Distributor | Floatra webhook secret (HMAC) | Floatra account team | Odoo `Settings → Floatra` |
-| Distributor | Floatra Platform ID (slug) | Floatra account team | Odoo `Settings → Floatra` |
-| Floatra | Distributor's webhook URL | Distributor (e.g. `https://erp.acme.ng/floatra/webhook`) | Floatra `Platform.webhookUrl` |
+| Distributor | Floatra API key (live: `live_pk_*`; sandbox: `pk_*` or `sbx_pk_*`) | Floatra platform console (sandbox: Sandbox Home → Generate sandbox credentials; live: issued at Go Live) | Odoo `Settings → Floatra` |
+| Distributor | Floatra webhook secret (HMAC) | Floatra platform console, Webhooks page (shown once, on the first save of the webhook URL) | Odoo `Settings → Floatra` |
+| Distributor | Floatra Platform ID | Floatra platform console, Sandbox Home | Odoo `Settings → Floatra` |
+| Floatra | Distributor's webhook URL | Distributor saves it on the console's Webhooks page (e.g. `https://erp.acme.ng/floatra/webhook`) | Floatra `Platform.webhookUrl` |
+
+Floatra creates the platform itself and invites your account owner to the
+console; the rest is self-serve. Full guide: the **ERP Connectors** page of
+the Floatra docs (`/docs/connectors`).
 
 That's it. **No Odoo credentials are shared with Floatra** — the connection is:
 
@@ -101,15 +105,16 @@ You install this addon inside your own Odoo instance. Floatra does not touch you
    **Install** (or start Odoo once with `-i floatra_credit`; upgrades use
    `-u floatra_credit`).
 3. **As an Odoo admin:** open `Settings → Floatra` and paste the four values your Floatra account team gave you:
-   - **API Base URL** — `https://api.floatra.com` (host only; the addon adds `/v1/partner/...`). The same host serves live and sandbox: the API key decides which. An old `https://api.floatra.io/v1` value is migrated on upgrade.
-   - **Platform ID** — your slug (e.g. `acme-distributors`)
-   - **API Key** — the `live_pk_*` Bearer token (sandbox keys start `sbx_pk_`, or `pk_` after a rotation)
+   - **Floatra API Base URL** — `https://api.floatra.com` (host only; the addon adds `/v1/partner/...`). The same host serves live and sandbox: the API key decides which. An old `https://api.floatra.io/v1` value is migrated on upgrade.
+   - **Platform ID** — your Floatra platform ID (shown on the console's Sandbox Home)
+   - **API Key** — the `live_pk_*` Bearer token (sandbox keys start `pk_` or `sbx_pk_`)
    - **Webhook Secret** — the HMAC signing secret
-4. **Tell Floatra your webhook URL** — `https://<your-odoo-host>/floatra/webhook`. Floatra writes it to your `Platform.webhookUrl` record on their side. This URL needs to be publicly reachable; if your Odoo runs behind a firewall, the easiest path is to put it behind a public reverse proxy or use a tunneling service (e.g. Cloudflare Tunnel, ngrok) during pilot.
+   - **Default Enforcement** — leave at Reorder Lock; this release stores it but does not send it to Floatra
+4. **Register your webhook URL** — `https://<your-odoo-host>/floatra/webhook` — on the **Webhooks** page of the Floatra platform console (public HTTPS only). The first save shows the webhook secret once. This URL needs to be publicly reachable; if your Odoo runs behind a firewall, the easiest path is to put it behind a public reverse proxy or use a tunneling service (e.g. Cloudflare Tunnel, ngrok) during pilot.
 5. **As an Odoo sales user:** open a customer record (it needs a Nigerian mobile number) → **Onboard with Floatra**. The Floatra Merchant ID appears on the **Floatra** tab; then **Get KYC Link** and send it to the merchant. Credit status refreshes hourly (or via `Settings → Technical → Scheduled Actions → Floatra: Sync Credit Status`) and immediately on Floatra's webhooks.
-6. **First credit request:** open a sales order for that customer → click **Request Floatra** in the header.
+6. **First credit request:** open a sales order for that customer → set **Floatra Tenure** on its **Floatra** tab if not 14 days → click **Request Financing** in the header.
 
-If anything in the API or webhook path is broken, the **Floatra → Webhook Logs** menu shows every inbound event with HMAC signature, payload, and processing status.
+If anything in the API or webhook path is broken, the **Floatra → Webhook Logs** menu shows every authenticated inbound event with its signature, payload, and processing status. A delivery rejected for its signature or timestamp (wrong secret, clock more than 5 minutes off) is answered 401 and appears only in the Odoo server log.
 
 ## Local dev environment
 

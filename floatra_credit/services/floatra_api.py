@@ -39,7 +39,7 @@ class FloatraAPIClient(FloatraClient):
 
     @classmethod
     def for_env(cls, env) -> "FloatraAPIClient":
-        config = env["res.config.settings"].sudo().get_floatra_config()
+        config = env["res.config.settings"].sudo()._get_floatra_config()
         return cls(
             base_url=config["base_url"],
             api_key=config["api_key"],

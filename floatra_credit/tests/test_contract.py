@@ -581,7 +581,7 @@ class _Settings:
     def sudo(self):
         return self
 
-    def get_floatra_key_is_live(self):
+    def _get_floatra_key_is_live(self):
         return self.live
 
 

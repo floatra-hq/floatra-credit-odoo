@@ -3,6 +3,19 @@
 All notable changes to the Floatra Odoo connector (`floatra_credit`).
 Versions follow the addon's `__manifest__.py` (`<odoo series>.<major>.<minor>.<patch>`).
 
+## [17.0.0.3.3] - 2026-10-19
+
+- **Security: settings secrets no longer readable over RPC.** The settings
+  readers `get_floatra_config`, `get_webhook_secret` and
+  `get_floatra_key_is_live` were public model methods returning
+  `ir.config_parameter` values through `sudo()`. Odoo lets any logged-in user
+  call a public method over `/web/dataset/call_kw` or XML-RPC, so any internal
+  (and likely portal) user could read the Floatra API key and the webhook HMAC
+  secret. They are now private (`_get_…`) and can't be called remotely; a
+  static test fails if a public settings method reads a `floatra_credit.*`
+  parameter. **After upgrading, rotate the Floatra API key and the webhook
+  secret** — anyone with an Odoo login could have read the old ones.
+
 ## [17.0.0.3.2] - 2026-10-08
 
 - **Clear copy for a deactivated platform.** Floatra now answers a deactivated

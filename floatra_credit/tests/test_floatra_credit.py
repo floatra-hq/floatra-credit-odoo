@@ -111,7 +111,7 @@ class TestFloatraCreditScaffold(TransactionCase):
     def test_base_url_setting_is_normalized(self):
         params = self.env["ir.config_parameter"].sudo()
         params.set_param("floatra_credit.api_base_url", "https://api.floatra.io/v1")
-        config = self.env["res.config.settings"].get_floatra_config()
+        config = self.env["res.config.settings"]._get_floatra_config()
         self.assertEqual(config["base_url"], "https://api.floatra.com")
 
 

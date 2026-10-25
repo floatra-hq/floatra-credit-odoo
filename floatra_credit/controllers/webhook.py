@@ -62,7 +62,7 @@ class FloatraWebhookController(http.Controller):
         signature = headers.get("X-Floatra-Signature", "")
 
         # O-2: read only the webhook secret, never the outbound api_key.
-        secret = request.env["res.config.settings"].sudo().get_webhook_secret()
+        secret = request.env["res.config.settings"].sudo()._get_webhook_secret()
         try:
             verify_webhook(
                 secret,
@@ -148,7 +148,7 @@ def _route_event(payload: dict, log_row, env):
     Used by the live receiver and by the undelivered-webhook cron, which
     passes its own ``env`` (``request`` is unbound in a cron).
     """
-    live_key = env["res.config.settings"].sudo().get_floatra_key_is_live()
+    live_key = env["res.config.settings"].sudo()._get_floatra_key_is_live()
     if not webhook_realm_matches(payload, live_key):
         _logger.info(
             "Floatra webhook %s (%s) is from the other realm (livemode=%r, "

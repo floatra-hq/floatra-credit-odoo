@@ -60,8 +60,15 @@ class ResConfigSettings(models.TransientModel):
         default="reorder_lock",
     )
 
+    # The three readers below are PRIVATE (leading underscore) on purpose:
+    # they return secrets through sudo() with no group check, and Odoo
+    # exposes every non-underscore model method to any logged-in user over
+    # RPC (/web/dataset/call_kw, XML-RPC). A public name would hand the live
+    # API key and the webhook HMAC secret to any internal or portal user.
+    # Guarded by tests/test_config_secret_access_static.py.
+
     @api.model
-    def get_floatra_config(self):
+    def _get_floatra_config(self):
         """Return the outbound API-client config as a dict.
 
         Centralises the ir.config_parameter reads for the API client.
@@ -70,7 +77,7 @@ class ResConfigSettings(models.TransientModel):
         it's a distinct secret only the webhook controller needs. Bundling
         both secrets in one dict widened the blast radius if this method's
         result were ever logged or leaked. The webhook controller reads its
-        secret via `get_webhook_secret()` instead, so no single call
+        secret via `_get_webhook_secret()` instead, so no single call
         materialises both the outbound api_key and the inbound secret.
         """
         params = self.env["ir.config_parameter"].sudo()
@@ -88,7 +95,7 @@ class ResConfigSettings(models.TransientModel):
         }
 
     @api.model
-    def get_floatra_key_is_live(self):
+    def _get_floatra_key_is_live(self):
         """Whether the configured API key is a live key (``live_pk_``).
 
         The webhook receiver needs only the realm (to drop the other realm's
@@ -101,10 +108,10 @@ class ResConfigSettings(models.TransientModel):
         )
 
     @api.model
-    def get_webhook_secret(self):
+    def _get_webhook_secret(self):
         """Return only the inbound webhook HMAC secret (O-2).
 
-        Separate from get_floatra_config so the webhook controller never
+        Separate from _get_floatra_config so the webhook controller never
         pulls the outbound api_key it doesn't need, and vice versa.
         """
         return (
